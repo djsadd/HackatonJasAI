@@ -1,8 +1,4 @@
 import face_recognition
-import psqlpt
-import imutils
-import pickle
-import time
 import cv2
 import numpy as np
 import os
@@ -10,8 +6,6 @@ import os
 
 def get_person(photo, db):
     cursor = db.cursor()
-
-    enc = []
     cascPathface = os.path.dirname(
         cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"
     faceCascade = cv2.CascadeClassifier(cascPathface)
@@ -32,7 +26,6 @@ def get_person(photo, db):
         lst_name.append(row[1])
 
     data = {'encodings': lst_data, 'names': lst_name}
-    # Find path to the image you want to detect face and pass it here
     image = cv2.imread(photo)
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
