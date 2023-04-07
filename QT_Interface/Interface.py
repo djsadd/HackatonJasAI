@@ -1,12 +1,10 @@
 import sys
-import subprocess
-import sqlite3
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QFileDialog
-from PySide6.QtGui import QPixmap
 from ui_main_sec import Ui_MainWindow
 from ui_reg import Ui_Form
-import main2
+import Find_Person
 import Upload_Person_To_db
+import psqlpt
 
 
 class MainWindow(QMainWindow):
@@ -18,6 +16,7 @@ class MainWindow(QMainWindow):
 
         self.ui.New.clicked.connect(self.open_other_form)
         self.ui.Find.clicked.connect(self.search_person)
+        self.db = psqlpt.create_connection('hackatosjasai', 'postgres', '', 'localhost', '5432')
 
     def open_other_form(self):
         self.other_form = RegDialog()
@@ -29,18 +28,16 @@ class MainWindow(QMainWindow):
 
         file_path, _ = QFileDialog.getOpenFileName(
             self.other_form, 'Выбрать фото', '', 'Изображения (*.png *.jpg *.bmp *.gif)')
-        print(file_path)
 
     def search_person(self):
-        # Получаем введенное имя пользователя для поиска
         file_path, _ = QFileDialog.getOpenFileName(self.other_form, 'Выбрать фото', '', 'Изображения (*.png *.jpg *.bmp *.gif)')
-        print(file_path)
-        main2.get_person(file_path)
+        Find_Person.get_person(file_path, self.db)
 
 
 class RegDialog(QDialog):
     def __init__(self):
         super(RegDialog, self).__init__()
+        self.file_path = None
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui.next.clicked.connect(self.save_data)
@@ -55,10 +52,8 @@ class RegDialog(QDialog):
         QMessageBox.information(self, 'Успех', 'Данные сохранены в базу данных')
 
     def open_file_dialog(self):
-
         self.file_path, _ = QFileDialog.getOpenFileName(
             self, 'Выбрать фото', '', 'Изображения (*.png *.jpg *.bmp *.gif)')
-        print(_)
 
 
 if __name__ == "__main__":
