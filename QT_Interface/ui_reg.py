@@ -22,41 +22,75 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(826, 592)
+        Form.resize(778, 554)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
+        Form.setSizePolicy(sizePolicy)
+        Form.setMinimumSize(QSize(778, 554))
+        Form.setMaximumSize(QSize(778, 554))
         Form.setStyleSheet(u"")
         self.frame = QFrame(Form)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 30, 811, 551))
+        self.frame.setGeometry(QRect(-19, -9, 811, 591))
         self.frame.setStyleSheet(u"QFrame{\n"
-"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(57, 106, 136, 255), stop:1 rgba(255, 187, 187, 255));\n"
+"background-color:rgb(40, 40, 43);\n"
 "border-radius:10px\n"
-"}")
+"}\n"
+"")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.next = QPushButton(self.frame)
         self.next.setObjectName(u"next")
-        self.next.setGeometry(QRect(270, 330, 201, 51))
+        self.next.setGeometry(QRect(300, 340, 201, 51))
+        font = QFont()
+        font.setFamilies([u"Constantia"])
+        font.setPointSize(14)
+        self.next.setFont(font)
         self.next.setStyleSheet(u"QPushButton{\n"
-"background-color:rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"color: white\n"
+"  background-color:rgb(48,186,143);\n"
+"border:1px solid #717171;\n"
+"border-radius:5px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"	background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.825, fx:0.5, fy:0.5, stop:0 rgba(48, 186, 143, 255), stop:1 rgba(146, 255, 150, 255))\n"
+"	\n"
+"}\n"
+"QPushButton:pressed{\n"
+"	background-color:rgb(48,186,143);\n"
+"\n"
 "}")
         self.Name = QLineEdit(self.frame)
         self.Name.setObjectName(u"Name")
-        self.Name.setGeometry(QRect(300, 220, 151, 31))
+        self.Name.setGeometry(QRect(280, 210, 241, 41))
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(270, 190, 31, 81))
-        self.label.setStyleSheet(u"QLabel{\n"
-"background-color:rgba(175, 255, 246, 0)\n"
+        self.label.setGeometry(QRect(210, 190, 61, 81))
+        self.label.setFont(font)
+        self.label.setStyleSheet(u"QLabel{color:rgb(255, 255, 255);\n"
+"background-color:rgba(255, 255, 255, 0);\n"
 "}")
         self.photo = QPushButton(self.frame)
         self.photo.setObjectName(u"photo")
-        self.photo.setGeometry(QRect(270, 270, 201, 51))
+        self.photo.setGeometry(QRect(300, 270, 201, 51))
+        self.photo.setFont(font)
         self.photo.setStyleSheet(u"QPushButton{\n"
-"background-color:rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"color: white\n"
+"  background-color:rgb(48,186,143);\n"
+"border:1px solid #717171;\n"
+"border-radius:5px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"	background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.825, fx:0.5, fy:0.5, stop:0 rgba(48, 186, 143, 255), stop:1 rgba(146, 255, 150, 255))\n"
+"	\n"
+"}\n"
+"QPushButton:pressed{\n"
+"	background-color:rgb(48,186,143);\n"
+"\n"
 "}")
 
         self.retranslateUi(Form)

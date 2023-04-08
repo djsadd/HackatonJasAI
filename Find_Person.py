@@ -48,11 +48,13 @@ def get_person(photo, db):
                 name = data["names"][i]
                 counts[name] = counts.get(name, 0) + 1
                 name = max(counts, key=counts.get)
+                print(name)
 
             names.append(name)
             for ((x, y, w, h), name) in zip(faces, names):
                 cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
                 cv2.putText(image, name, (x, y), cv2.FONT_HERSHEY_SIMPLEX,
-                            0.75, (0, 255, 0), 2)
-        cv2.imshow("Frame", image)
-        cv2.waitKey(0)
+                            2, (0, 255, 0), 2)
+        # cv2.imshow("Frame", image)
+        # cv2.waitKey(0)
+        return image

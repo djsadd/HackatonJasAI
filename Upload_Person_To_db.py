@@ -3,9 +3,9 @@ import face_recognition
 import pickle
 import cv2
 import os
-import psqlpt
+from QT_Interface.psqlt import create_connection
 
-db = psqlpt.create_connection('hackatosjasai', 'postgres', '', 'localhost', '5432')
+db = create_connection('hackatosjasai', 'postgres', '', 'localhost', '5432')
 cursor = db.cursor()
 
 
