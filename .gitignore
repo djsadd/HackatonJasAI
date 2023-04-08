@@ -5,8 +5,5 @@ face_enc
 
 test_connection.py
 
-psqlpt.py
-
 .idea
-QT_Interface
 __pycache__
